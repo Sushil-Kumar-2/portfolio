@@ -9,7 +9,7 @@ export const experience: ExperienceItem[] = [
   {
     company: "Analytic IT Services",
     role: "Full Stack Developer",
-    period: "2024 — Present · 1 yr 2 mo",
+    period: "2026 — Present · 1 yr 2 mo",
     highlights: [
       "Developed full stack responsive web applications using HTML, CSS, Bootstrap, and JavaScript, reducing UI bugs by 40%.",
       "Built dynamic frontends using React.js and Next.js, improving page load time by 35% through code splitting and lazy loading.",
