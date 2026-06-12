@@ -8,6 +8,7 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { SectionShell } from "@/components/ui/section-shell";
 import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
 import { projects } from "@/lib/data/projects";
 import { cn } from "@/lib/utils";
 
@@ -57,6 +58,20 @@ function ProjectCard({
           <span className="absolute top-4 left-4 font-mono text-xs font-medium text-white/80">
             0{index + 1}
           </span>
+          {project.liveUrl ? (
+            <Link
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ size: "sm" }),
+                "absolute right-4 bottom-4 h-9 rounded-full px-4 shadow-lg shadow-accent-brand/30 transition-transform hover:scale-105",
+              )}
+            >
+              Live Demo
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </Link>
+          ) : null}
         </div>
       </TiltedCard>
 
@@ -92,16 +107,19 @@ function ProjectCard({
           ))}
         </div>
 
-        <div className="mt-auto flex items-center gap-5 pt-6">
+        <div className="mt-auto flex flex-wrap items-center gap-3 border-t border-border/60 pt-6">
           {project.liveUrl ? (
             <Link
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-brand hover:underline"
+              className={cn(
+                buttonVariants({ size: "default" }),
+                "h-10 rounded-full px-5 shadow-md shadow-accent-brand/25",
+              )}
             >
-              Live Demo
-              <ArrowUpRight className="h-3.5 w-3.5" />
+              View Live Demo
+              <ArrowUpRight className="h-4 w-4" />
             </Link>
           ) : null}
           <Link
@@ -109,11 +127,13 @@ function ProjectCard({
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-              "inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground",
-              !project.liveUrl && "text-accent-brand",
+              buttonVariants({ variant: "ghost", size: "default" }),
+              "h-10 rounded-full px-4 text-muted-foreground hover:text-foreground",
+              !project.liveUrl &&
+                "bg-primary text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground",
             )}
           >
-            <Code2 className="h-3.5 w-3.5" />
+            <Code2 className="h-4 w-4" />
             Source Code
           </Link>
         </div>
