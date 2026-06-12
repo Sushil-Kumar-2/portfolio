@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <rect width="1200" height="900" fill="#F8F8F7"/>
+  <rect x="48" y="48" width="220" height="804" rx="16" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="80" y="80" width="100" height="16" rx="4" fill="#111111"/>
+  <rect x="80" y="140" width="156" height="32" rx="8" fill="#111111" opacity="0.08"/>
+  <rect x="80" y="188" width="156" height="32" rx="8" fill="#F3F4F6"/>
+  <rect x="80" y="236" width="156" height="32" rx="8" fill="#F3F4F6"/>
+  <rect x="80" y="284" width="156" height="32" rx="8" fill="#F3F4F6"/>
+  <rect x="300" y="48" width="852" height="804" rx="16" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="332" y="80" width="200" height="20" rx="4" fill="#111111"/>
+  <rect x="332" y="120" width="320" height="12" rx="3" fill="#9CA3AF"/>
+  <rect x="332" y="180" width="200" height="120" rx="12" fill="#F8F8F7" stroke="#E8E8E6"/>
+  <rect x="352" y="204" width="80" height="10" rx="3" fill="#9CA3AF"/>
+  <rect x="352" y="228" width="120" height="20" rx="4" fill="#111111"/>
+  <rect x="556" y="180" width="200" height="120" rx="12" fill="#F8F8F7" stroke="#E8E8E6"/>
+  <rect x="576" y="204" width="80" height="10" rx="3" fill="#9CA3AF"/>
+  <rect x="576" y="228" width="120" height="20" rx="4" fill="#111111"/>
+  <rect x="780" y="180" width="200" height="120" rx="12" fill="#F8F8F7" stroke="#E8E8E6"/>
+  <rect x="800" y="204" width="80" height="10" rx="3" fill="#9CA3AF"/>
+  <rect x="800" y="228" width="120" height="20" rx="4" fill="#111111"/>
+  <rect x="332" y="340" width="788" height="480" rx="12" fill="#FAFAF9" stroke="#E8E8E6"/>
+  <rect x="356" y="364" width="180" height="12" rx="3" fill="#111111"/>
+  <rect x="356" y="392" width="120" height="10" rx="3" fill="#9CA3AF"/>
+  <rect x="356" y="420" width="740" height="1" fill="#E8E8E6"/>
+  <rect x="356" y="444" width="200" height="10" rx="3" fill="#6B7280"/>
+  <rect x="600" y="444" width="120" height="10" rx="3" fill="#6B7280"/>
+  <rect x="800" y="444" width="100" height="10" rx="3" fill="#6B7280"/>
+  <rect x="356" y="476" width="740" height="48" rx="8" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="356" y="540" width="740" height="48" rx="8" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="356" y="604" width="740" height="48" rx="8" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <text x="900" y="120" font-family="system-ui,sans-serif" font-size="13" fill="#6B7280">Student Management</text>
+</svg>

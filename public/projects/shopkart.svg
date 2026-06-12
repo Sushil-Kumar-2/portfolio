@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" fill="none">
+  <rect width="1200" height="750" fill="#F8F8F7"/>
+  <rect x="48" y="48" width="1104" height="64" rx="12" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="80" y="72" width="120" height="16" rx="4" fill="#111111"/>
+  <rect x="900" y="68" width="80" height="24" rx="12" fill="#F0F0EE"/>
+  <rect x="1000" y="68" width="80" height="24" rx="12" fill="#F0F0EE"/>
+  <rect x="48" y="140" width="1104" height="280" rx="16" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="80" y="180" width="320" height="28" rx="6" fill="#111111"/>
+  <rect x="80" y="224" width="480" height="16" rx="4" fill="#9CA3AF"/>
+  <rect x="80" y="256" width="140" height="40" rx="20" fill="#2563EB"/>
+  <rect x="720" y="160" width="400" height="200" rx="12" fill="#F3F4F6"/>
+  <text x="860" y="270" font-family="system-ui,sans-serif" font-size="14" fill="#6B7280">ShopKart</text>
+  <rect x="48" y="448" width="260" height="220" rx="12" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="68" y="468" width="220" height="120" rx="8" fill="#F3F4F6"/>
+  <rect x="68" y="604" width="140" height="12" rx="3" fill="#111111"/>
+  <rect x="68" y="626" width="80" height="10" rx="3" fill="#9CA3AF"/>
+  <rect x="332" y="448" width="260" height="220" rx="12" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="352" y="468" width="220" height="120" rx="8" fill="#F3F4F6"/>
+  <rect x="352" y="604" width="140" height="12" rx="3" fill="#111111"/>
+  <rect x="352" y="626" width="80" height="10" rx="3" fill="#9CA3AF"/>
+  <rect x="616" y="448" width="260" height="220" rx="12" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="636" y="468" width="220" height="120" rx="8" fill="#F3F4F6"/>
+  <rect x="636" y="604" width="140" height="12" rx="3" fill="#111111"/>
+  <rect x="636" y="626" width="80" height="10" rx="3" fill="#9CA3AF"/>
+  <rect x="900" y="448" width="252" height="220" rx="12" fill="#FFFFFF" stroke="#E8E8E6"/>
+  <rect x="920" y="468" width="212" height="120" rx="8" fill="#F3F4F6"/>
+  <rect x="920" y="604" width="140" height="12" rx="3" fill="#111111"/>
+  <rect x="920" y="626" width="80" height="10" rx="3" fill="#9CA3AF"/>
+</svg>
