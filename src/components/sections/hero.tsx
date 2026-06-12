@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { ArrowRight, MapPin } from "lucide-react";
 import BlurText from "@/components/react-bits/blur-text";
 import { FadeIn } from "@/components/ui/fade-in";
@@ -15,28 +16,40 @@ const Ballpit = dynamic(() => import("@/components/react-bits/ballpit"), {
 });
 
 export function Hero() {
+  const [ballCount, setBallCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 768px)");
+    const update = () => setBallCount(media.matches ? 35 : 80);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+
   return (
-    <section className="relative min-h-[90vh] overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
+    <section className="relative min-h-[90vh] overflow-hidden pt-28 pb-20 [touch-action:pan-y] md:pt-36 md:pb-28">
       <div
         className="pointer-events-none absolute inset-0 z-0 opacity-35 max-md:opacity-25 dark:opacity-30 dark:max-md:opacity-20"
         aria-hidden
       >
-        <Ballpit
-          className="h-full w-full"
-          count={100}
-          gravity={0.35}
-          followCursor={false}
-          colors={[0x2563eb, 0x6366f1, 0x0ea5e9, 0x818cf8]}
-          ambientColor={0x3b82f6}
-          ambientIntensity={0.55}
-          lightIntensity={200}
-          materialParams={{
-            metalness: 0.12,
-            roughness: 0.42,
-            clearcoat: 1,
-            clearcoatRoughness: 0.1,
-          }}
-        />
+        {ballCount !== null ? (
+          <Ballpit
+            className="h-full w-full"
+            count={ballCount}
+            gravity={0.35}
+            followCursor={false}
+            colors={[0x2563eb, 0x6366f1, 0x0ea5e9, 0x818cf8]}
+            ambientColor={0x3b82f6}
+            ambientIntensity={0.55}
+            lightIntensity={200}
+            materialParams={{
+              metalness: 0.12,
+              roughness: 0.42,
+              clearcoat: 1,
+              clearcoatRoughness: 0.1,
+            }}
+          />
+        ) : null}
       </div>
 
       <div

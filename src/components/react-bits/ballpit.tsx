@@ -716,42 +716,53 @@ function processPointerInteraction() {
   }
 }
 
+function isTouchInsideTrackedElement(e: TouchEvent): boolean {
+  if (e.touches.length === 0) return false;
+  pointerPosition.set(e.touches[0].clientX, e.touches[0].clientY);
+  for (const [elem] of pointerMap) {
+    if (isInside(elem.getBoundingClientRect())) return true;
+  }
+  return false;
+}
+
 function onTouchStart(e: TouchEvent) {
-  if (e.touches.length > 0) {
-    e.preventDefault();
-    pointerPosition.set(e.touches[0].clientX, e.touches[0].clientY);
-    for (const [elem, data] of pointerMap) {
-      const rect = elem.getBoundingClientRect();
-      if (isInside(rect)) {
-        data.touching = true;
-        updatePointerData(data, rect);
-        if (!data.hover) {
-          data.hover = true;
-          data.onEnter(data);
-        }
-        data.onMove(data);
+  if (e.touches.length === 0) return;
+
+  const inside = isTouchInsideTrackedElement(e);
+  if (inside) e.preventDefault();
+
+  for (const [elem, data] of pointerMap) {
+    const rect = elem.getBoundingClientRect();
+    if (isInside(rect)) {
+      data.touching = true;
+      updatePointerData(data, rect);
+      if (!data.hover) {
+        data.hover = true;
+        data.onEnter(data);
       }
+      data.onMove(data);
     }
   }
 }
 
 function onTouchMove(e: TouchEvent) {
-  if (e.touches.length > 0) {
-    e.preventDefault();
-    pointerPosition.set(e.touches[0].clientX, e.touches[0].clientY);
-    for (const [elem, data] of pointerMap) {
-      const rect = elem.getBoundingClientRect();
-      updatePointerData(data, rect);
-      if (isInside(rect)) {
-        if (!data.hover) {
-          data.hover = true;
-          data.touching = true;
-          data.onEnter(data);
-        }
-        data.onMove(data);
-      } else if (data.hover && data.touching) {
-        data.onMove(data);
+  if (e.touches.length === 0) return;
+
+  const inside = isTouchInsideTrackedElement(e);
+  if (inside) e.preventDefault();
+
+  for (const [elem, data] of pointerMap) {
+    const rect = elem.getBoundingClientRect();
+    updatePointerData(data, rect);
+    if (isInside(rect)) {
+      if (!data.hover) {
+        data.hover = true;
+        data.touching = true;
+        data.onEnter(data);
       }
+      data.onMove(data);
+    } else if (data.hover && data.touching) {
+      data.onMove(data);
     }
   }
 }
@@ -932,25 +943,33 @@ function createBallpit(
   const intersectionPoint = new Vector3();
   let isPaused = false;
 
-  canvas.style.touchAction = "none";
-  canvas.style.userSelect = "none";
-  (
-    canvas.style as CSSStyleDeclaration & { webkitUserSelect?: string }
-  ).webkitUserSelect = "none";
+  let pointerDispose: (() => void) | undefined;
 
-  const pointerData = createPointerData({
-    domElement: canvas,
-    onMove() {
-      raycaster.setFromCamera(pointerData.nPosition, threeInstance.camera);
-      threeInstance.camera.getWorldDirection(plane.normal);
-      raycaster.ray.intersectPlane(plane, intersectionPoint);
-      spheres.physics.center.copy(intersectionPoint);
-      spheres.config.controlSphere0 = true;
-    },
-    onLeave() {
-      spheres.config.controlSphere0 = false;
-    },
-  });
+  if (config.followCursor !== false) {
+    canvas.style.touchAction = "none";
+    canvas.style.userSelect = "none";
+    (
+      canvas.style as CSSStyleDeclaration & { webkitUserSelect?: string }
+    ).webkitUserSelect = "none";
+
+    const pointerData = createPointerData({
+      domElement: canvas,
+      onMove() {
+        raycaster.setFromCamera(pointerData.nPosition, threeInstance.camera);
+        threeInstance.camera.getWorldDirection(plane.normal);
+        raycaster.ray.intersectPlane(plane, intersectionPoint);
+        spheres.physics.center.copy(intersectionPoint);
+        spheres.config.controlSphere0 = true;
+      },
+      onLeave() {
+        spheres.config.controlSphere0 = false;
+      },
+    });
+    pointerDispose = pointerData.dispose;
+  } else {
+    canvas.style.touchAction = "auto";
+    canvas.style.pointerEvents = "none";
+  }
 
   function initialize(cfg: Partial<BallpitMeshConfig>) {
     if (spheres) {
@@ -981,7 +1000,7 @@ function createBallpit(
       isPaused = !isPaused;
     },
     dispose() {
-      pointerData.dispose?.();
+      pointerDispose?.();
       threeInstance.dispose();
     },
   };
