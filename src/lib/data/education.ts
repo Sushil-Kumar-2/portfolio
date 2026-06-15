@@ -6,7 +6,7 @@ export type EducationItem = {
 
 export const education: EducationItem[] = [
   {
-    degree: "PGDCA",
+    degree: "Post Graduate Diploma in Computer Applications",
     institution: "NIELIT Shimla",
     period: "2023 — 2024",
   },
